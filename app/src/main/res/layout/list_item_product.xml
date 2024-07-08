@@ -11,14 +11,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_margin="4dp"
-            android:layout_marginBottom="9dp"
+            android:layout_margin="9dp"
             android:src="@drawable/google_play"
             app:layout_constraintBottom_toTopOf="@+id/tv_product_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,14 +29,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Google Play Google Play Google Play Googley Google Play Google Play Googley Google Play Google Play Googley Google Play Google Play Googley Google Play Google Play Google Play"
+            android:text="Google Play"
+            android:textColor="@color/material_dynamic_primary60"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/material_dynamic_primary60"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iv_product"
             app:layout_constraintStart_toStartOf="@+id/iv_product"
-            app:layout_constraintTop_toBottomOf="@+id/iv_product"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/iv_product" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
