@@ -5,6 +5,7 @@
     android:layout_height="300dp"
     android:layout_marginBottom="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="0dp"
     android:backgroundTint="@color/material_dynamic_neutral80">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,17 +14,32 @@
 
         <TextView
             android:id="@+id/tv_category_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:text="Category Title"
-            android:textSize="16sp"
+            android:textColor="@color/material_dynamic_primary10"
+            android:textSize="26sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_category_icon_next"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="24dp"
+            android:rotationY="180"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="?attr/homeAsUpIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_category_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.987"
+            app:layout_constraintStart_toEndOf="@+id/tv_category_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_category_title"
+            app:layout_constraintVertical_bias="0.413" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_products"
@@ -34,8 +50,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_category_title" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
