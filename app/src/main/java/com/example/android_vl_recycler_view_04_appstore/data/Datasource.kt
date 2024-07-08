@@ -48,9 +48,13 @@ class Datasource {
         )
     }
 
-    private fun generateRandomProduct(): Product {
-        val randomName = generateReadableName()
-        return Product(randomName, getRandomColor())
+    private fun generateRandomProduct(count: Int = 50): Product {
+        val name = StringBuilder()
+        val randomMaxIntBetweenTwoAnd50 = (2..count).random()
+        for (i in 1..randomMaxIntBetweenTwoAnd50) {
+            name.append("${generateReadableName()} ")
+        }
+        return Product(name.toString(), getRandomColor())
     }
 
     private fun generateReadableName(): String {
