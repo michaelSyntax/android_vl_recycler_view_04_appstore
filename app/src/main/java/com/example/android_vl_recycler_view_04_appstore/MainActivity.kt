@@ -23,6 +23,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.rvAppStore.adapter = CategoryAdapter(Datasource().loadCategories())
+        binding.rvAppStore.adapter = CategoryAdapter(this, Datasource().loadCategories())
     }
 }

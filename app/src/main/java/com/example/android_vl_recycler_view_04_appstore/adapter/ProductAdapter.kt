@@ -1,12 +1,19 @@
 package com.example.android_vl_recycler_view_04_appstore.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android_vl_recycler_view_04_appstore.R
 import com.example.android_vl_recycler_view_04_appstore.data.model.Product
 import com.example.android_vl_recycler_view_04_appstore.databinding.ListItemProductBinding
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.MaterialColors.getColor
+import com.google.android.material.snackbar.Snackbar
 
 class ProductAdapter(
+    private val context: Context,
     private val products: List<Product>
 ): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
@@ -24,5 +31,10 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
        val product = products[position]
         holder.vb.tvProductName.text = product.name
+        holder.vb.clProduct.setBackgroundColor(product.color)
+
+        holder.vb.root.setOnClickListener {
+           Snackbar.make(holder.itemView, product.name, Snackbar.LENGTH_SHORT).show()
+        }
     }
 }

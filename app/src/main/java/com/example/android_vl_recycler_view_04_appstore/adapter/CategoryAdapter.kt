@@ -1,5 +1,6 @@
 package com.example.android_vl_recycler_view_04_appstore.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,7 @@ import com.example.android_vl_recycler_view_04_appstore.data.model.Category
 import com.example.android_vl_recycler_view_04_appstore.databinding.ListItemCategoryBinding
 
 class CategoryAdapter(
+    private val context: Context,
     private val categories: List<Category>
 ): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
@@ -24,6 +26,6 @@ class CategoryAdapter(
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categories[position]
         holder.vb.tvCategoryTitle.text = category.name
-        holder.vb.rvProducts.adapter = ProductAdapter(category.products)
+        holder.vb.rvProducts.adapter = ProductAdapter(context, category.products)
     }
 }

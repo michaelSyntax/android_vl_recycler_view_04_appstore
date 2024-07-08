@@ -2,6 +2,8 @@ package com.example.android_vl_recycler_view_04_appstore.data
 
 import com.example.android_vl_recycler_view_04_appstore.data.model.Category
 import com.example.android_vl_recycler_view_04_appstore.data.model.Product
+import java.util.Collections
+import java.util.Stack
 import kotlin.random.Random
 
 class Datasource {
@@ -48,7 +50,7 @@ class Datasource {
 
     private fun generateRandomProduct(): Product {
         val randomName = generateReadableName()
-        return Product(randomName, 4.5, "", 1, 4.5)
+        return Product(randomName, getRandomColor())
     }
 
     private fun generateReadableName(): String {
@@ -68,5 +70,36 @@ class Datasource {
         }
 
         return name.toString()
+    }
+
+    // https://stackoverflow.com/questions/5280367/android-generate-random-color-on-click
+    private fun getSemiRandomColor(): Int {
+        val recycle: Stack<Int> = Stack()
+        val colors:Stack<Int> = Stack()
+
+        recycle.addAll(
+            listOf(
+                // ARGB hex to int >> (0xFFEE5670.toInt(),...)
+                -0xbbcca, -0x16e19d, -0x63d850, -0x98c549,
+                -0xc0ae4b, -0xde690d, -0xfc560c, -0xff432c,
+                -0xff6978, -0xb350b0, -0x743cb6, -0x3223c7,
+                -0x14c5, -0x3ef9, -0x6800, -0xa8de,
+                -0x86aab8, -0x616162, -0x9f8275, -0xcccccd
+            )
+        )
+
+        if (colors.size == 0) {
+            while (!recycle.isEmpty()) colors.push(recycle.pop())
+        }
+
+        Collections.shuffle(colors)
+        val randomColor = colors.pop()
+        recycle.push(randomColor)
+
+        return randomColor
+    }
+
+    private fun getRandomColor(): Int {
+        return  (Math.random() * 16777215).toInt() or (0xFF shl 24)
     }
 }
