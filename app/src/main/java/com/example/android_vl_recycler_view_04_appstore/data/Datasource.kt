@@ -10,7 +10,7 @@ class Datasource {
     private fun loadProducts(count: Int = 100): List<Product> {
         val products = mutableListOf<Product>()
         for (i in 1..count) {
-            products.add(generateRandomProduct())
+            products.add(generateRandomProduct()) // Default count is set 50, generateRandomProduct(1)
         }
         return products
     }
