@@ -3,10 +3,9 @@ package com.example.android_vl_recycler_view_04_appstore.data
 import com.example.android_vl_recycler_view_04_appstore.data.model.Category
 import com.example.android_vl_recycler_view_04_appstore.data.model.Product
 import kotlin.random.Random
-import kotlin.random.asJavaRandom
 
 class Datasource {
-    fun loadProducts(count: Int = 100): List<Product> {
+    private fun loadProducts(count: Int = 100): List<Product> {
         val products = mutableListOf<Product>()
         for (i in 1..count) {
             products.add(generateRandomProduct())
@@ -52,17 +51,22 @@ class Datasource {
         return Product(randomName, 4.5, "", 1, 4.5)
     }
 
-    fun generateReadableName(): String {
+    private fun generateReadableName(): String {
         val consonants = "bcdfghjklmnpqrstvwxyz"
         val vowels = "aeiou"
-        val random = Random.asJavaRandom()
-
+        val random = Random.Default
         val name = StringBuilder()
-        name.append(consonants[random.nextInt(consonants.length)].uppercaseChar()) // Start with capital consonant
+        val randomMaxIntBetweenTwoAnd10 = (2..10).random()
+        val firstChar = consonants[random.nextInt(consonants.length)].uppercaseChar()
 
-        // Alternate between consonants and vowels for better readabilityfor (i in 1..5) {
-        //val charSet = if (i % 2 == 0) consonants else vowels
-        //name.append(charSet[random.nextInt(charSet.length)])
+        name.append(firstChar)
+
+        for (i in 1..randomMaxIntBetweenTwoAnd10) {
+            val charSet = if (i % 2 == 0) consonants else vowels
+            val nextChar = charSet[random.nextInt(charSet.length)]
+            name.append(nextChar)
+        }
+
         return name.toString()
     }
 }
