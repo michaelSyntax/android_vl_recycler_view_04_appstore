@@ -31,7 +31,7 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
        val product = products[position]
         holder.vb.tvProductName.text = product.name
-        holder.vb.clProduct.setBackgroundColor(product.color)
+        //holder.vb.clProduct.setBackgroundColor(product.color)
 
         holder.vb.root.setOnClickListener {
            Snackbar.make(holder.itemView, product.name, Snackbar.LENGTH_SHORT).show()
