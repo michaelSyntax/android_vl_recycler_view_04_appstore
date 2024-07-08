@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setEdgeAndSystemBars()
         setContentView(binding.root)
 
+        binding.rvAppStore.adapter = CategoryAdapter(this, Datasource().loadCategories())
     }
 
     private fun setEdgeAndSystemBars() {
