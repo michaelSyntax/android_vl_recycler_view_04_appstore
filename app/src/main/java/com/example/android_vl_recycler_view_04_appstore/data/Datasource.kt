@@ -10,7 +10,7 @@ class Datasource {
     private fun loadProducts(count: Int = 100): List<Product> {
         val products = mutableListOf<Product>()
         for (i in 1..count) {
-            products.add(generateRandomProduct()) // Default count is set 50, generateRandomProduct(1)
+            products.add(generateRandomProduct())
         }
         return products
     }
@@ -48,12 +48,9 @@ class Datasource {
         )
     }
 
-    private fun generateRandomProduct(count: Int = 50): Product {
+    private fun generateRandomProduct(): Product {
         val name = StringBuilder()
-        val randomMaxIntBetweenTwoAnd50 = (2..count).random()
-        for (i in 1..randomMaxIntBetweenTwoAnd50) {
-            name.append("${generateReadableName()} ")
-        }
+        name.append("${generateReadableName()} ")
         return Product(name.toString(), getRandomColor())
     }
 
@@ -62,12 +59,12 @@ class Datasource {
         val vowels = "aeiou"
         val random = Random.Default
         val name = StringBuilder()
-        val randomMaxIntBetweenTwoAnd10 = (2..10).random()
+        val charCount = (2..10).random()
         val firstChar = consonants[random.nextInt(consonants.length)].uppercaseChar()
 
         name.append(firstChar)
 
-        for (i in 1..randomMaxIntBetweenTwoAnd10) {
+        for (i in 1..charCount) {
             val charSet = if (i % 2 == 0) consonants else vowels
             val nextChar = charSet[random.nextInt(charSet.length)]
             name.append(nextChar)

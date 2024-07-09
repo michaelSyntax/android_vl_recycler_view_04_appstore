@@ -27,6 +27,5 @@ class CategoryAdapter(
         val category = categories[position]
         holder.vb.tvCategoryTitle.text = category.name
         holder.vb.rvProducts.adapter = ProductAdapter(context, category.products)
-        holder.vb.rvProducts.isNestedScrollingEnabled = false
     }
 }

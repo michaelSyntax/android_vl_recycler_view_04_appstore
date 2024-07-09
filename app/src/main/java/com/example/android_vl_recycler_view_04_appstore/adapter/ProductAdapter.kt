@@ -1,6 +1,7 @@
 package com.example.android_vl_recycler_view_04_appstore.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,10 +32,5 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
        val product = products[position]
         holder.vb.tvProductName.text = product.name
-        //holder.vb.clProduct.setBackgroundColor(product.color)
-
-        holder.vb.root.setOnClickListener {
-           Snackbar.make(holder.itemView, product.name, Snackbar.LENGTH_SHORT).show()
-        }
     }
 }
