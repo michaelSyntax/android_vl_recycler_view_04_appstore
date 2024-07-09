@@ -1,4 +1,4 @@
-package com.example.android_vl_recycler_view_04_appstore
+package com.example.android_vl_recycler_view_04_appstore.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
