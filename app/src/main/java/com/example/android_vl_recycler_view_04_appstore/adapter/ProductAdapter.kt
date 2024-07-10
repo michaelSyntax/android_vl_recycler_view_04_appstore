@@ -5,11 +5,12 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_vl_recycler_view_04_appstore.R
 import com.example.android_vl_recycler_view_04_appstore.data.model.Product
 import com.example.android_vl_recycler_view_04_appstore.databinding.ListItemProductBinding
-import com.example.android_vl_recycler_view_04_appstore.ui.ProductDetailActivity
+import com.example.android_vl_recycler_view_04_appstore.ui.ProductHomeFragmentDirections
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors.getColor
 import com.google.android.material.snackbar.Snackbar
@@ -37,10 +38,13 @@ class ProductAdapter(
         holder.vb.tvProductName.text = product.name
 
         holder.vb.root.setOnClickListener {
-            val intent = Intent(context, ProductDetailActivity::class.java)
-            intent.putExtra(EXTRA_KEY_PRODUCT_NAME, product.name)
-            intent.putExtra("Prodcut_price", 3)
-            context.startActivity(intent)
+            val navController = holder.itemView.findNavController()
+            navController.navigate(
+                ProductHomeFragmentDirections.
+                actionProductHomeFragmentToProductDetailFragment(
+                    product.name
+                )
+            )
         }
     }
 }
