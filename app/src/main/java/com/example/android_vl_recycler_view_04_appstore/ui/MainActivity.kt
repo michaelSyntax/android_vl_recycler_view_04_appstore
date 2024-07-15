@@ -10,6 +10,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.updatePadding
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.android_vl_recycler_view_04_appstore.R
 import com.example.android_vl_recycler_view_04_appstore.adapter.CategoryAdapter
 import com.example.android_vl_recycler_view_04_appstore.data.Datasource
 import com.example.android_vl_recycler_view_04_appstore.databinding.ActivityMainBinding
@@ -22,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        binding.bottomNav.setupWithNavController(navHost.navController)
 
         handleOnBackPressed()
         adjustContentPadding()
