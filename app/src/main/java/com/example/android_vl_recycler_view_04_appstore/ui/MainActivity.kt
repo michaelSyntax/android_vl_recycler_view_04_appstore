@@ -1,6 +1,7 @@
 package com.example.android_vl_recycler_view_04_appstore.ui
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -8,6 +9,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.updatePadding
+import androidx.navigation.findNavController
 import com.example.android_vl_recycler_view_04_appstore.adapter.CategoryAdapter
 import com.example.android_vl_recycler_view_04_appstore.data.Datasource
 import com.example.android_vl_recycler_view_04_appstore.databinding.ActivityMainBinding
@@ -21,8 +23,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        handleOnBackPressed()
         adjustContentPadding()
         hideSystemBars()
+    }
+
+    private fun handleOnBackPressed() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                binding.navHostFragmentContainer.findNavController().navigateUp()
+            }
+        }
+        onBackPressedDispatcher.addCallback(callback)
     }
 
     private fun hideSystemBars() {
@@ -38,7 +51,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(left = insets.left, top = insets.top, right = insets.right, bottom = insets.bottom)
+            view.updatePadding(
+                left = insets.left,
+                top = insets.top,
+                right = insets.right,
+                bottom = insets.bottom
+            )
             WindowInsetsCompat.CONSUMED
         }
     }
